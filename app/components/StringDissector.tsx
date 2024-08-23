@@ -22,7 +22,7 @@ const StringDissector: React.FC<StringDissectorProps> = () => {
 
   useEffect(() => {
     if (persistData) {
-      setCookie('userText', text, { path: '/', maxAge: 3600 * 24 * 30 }); // 30 days expiry
+      setCookie('userText', text, { path: '/', maxAge: 3600 * 24 * 365 }); // 1 year expiry
     } else {
       removeCookie('userText');
     }
@@ -57,7 +57,7 @@ const StringDissector: React.FC<StringDissectorProps> = () => {
         </div>
         <div className="flex items-center">
           <input type="checkbox" checked={persistData} onChange={() => setPersistData(!persistData)} className="mr-2" />
-          <label htmlFor="persist" className="text-gray-700">Persist data</label>
+          <label htmlFor="persist" className="text-gray-700">Persist data via browser cookie</label>
         </div>
         {text ? (
           <ol className="mt-4 list-disc">
